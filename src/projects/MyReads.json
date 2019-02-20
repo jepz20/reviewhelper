@@ -1,0 +1,142 @@
+[
+  {
+    "title": "General",
+    "description": "Great Job on your project so far, just a few more fixes and you will be ready to go :airplane:\n"
+  },
+  {
+    "title": "README",
+    "description": "You should personalize your README file to your project, add a brief description of your project and instructions for installing and launching the project, this will help other developers to run your application and enhance your github portfolio :sparkles:.  Here's a great Udacity [README course](https://www.udacity.com/course/writing-readmes--ud777) to help you enhance your skills.\n"
+  },
+  {
+    "title": "Search page isn't working need enter",
+    "description": "Search is working great when you hit the \"Enter\" Key, however it should show results as you type. You could do this by removing the condition to search only the keycode is 13 in the `updateQuery` function of the `Search` Component.\nAlso when the search returns no result, it doesn't empty the list, here you could verify if the list is empty and clear the result if it is.\n"
+  },
+  {
+    "title": "Empty Search:",
+    "description": "Excellent work showing the search result. One small detail is that when the search returns no results, you should clear the list and either show an empty list or a no result message.  You can achieve this by clearing the array if an `empty array` error is return\n"
+  },
+  {
+    "title": "getAll after update",
+    "description": "Instead of fetching the books from the backend you could update the books array in your state, since you already know the book that is being updated and to what shelf. This way your app would feel snappier.\nThis is technique is called [optimistic ui](https://uxplanet.org/optimistic-1000-34d9eefe4c05)\n"
+  },
+  {
+    "title": "difference Shelf/Search",
+    "description": "Some books on the search result may contain the wrong shelf, for example the book `Artificial Intelligence` is set to the `Read`  shelf, however, it appears still appears as `none` shelf on the search page.\n\nTo avoid this issue you should compare each book on the search result with the books on your shelves. If the book exists in any of your shelves use that shelf instead and if doesn't set the shelf as none.\n\nFor example if you had all the books on the shelves as\n```\nmyBooks = [\n  {\n   id: 1,\n   title: 'book1',\n   shelf: 'read'\n  }\n  {\n    id: 2,\n    title: 'book2',\n    shelf: 'currentlyReading'\n  }\n]\n```\nand your search result returns this array:\n```\nsearchedBooks = [\n  {\n    id: 1,\n    title: 'book1',\n    shelf: 'currentlyReading'\n  }\n  {\n     id: 4,\n     title: 'book4',\n     shelf: 'wanToRead'\n  }\n]\n```\nYou have to change each book's shelf on the search result `searchedBooks` where\n* book with id `1` should show the shelf `read`\n*  book with id `4` should show the shelf `none`\n\nOne way to accomplish this is to create at the `App` component level a `getBookShelf` function that receives the book id and return the book shelf. Pass. through props, that function all the way down to the `Book` component where you can get the shelf for each book at the `render` lifecycle hook.\n"
+  },
+  {
+    "title": "on Book component",
+    "description": "Regarding the difference between the search result and your shelves(see project review for more detail) Here you could verify the correct book shelf with a function received through props that get the correct book's shelf from your shelves.\n"
+  },
+  {
+    "title": "Commented code:",
+    "description": "Try to remove unnecessary commented code, this causes confusion in the future when you, or other developers, don't know why the code is commented and if it is safe to delete it.\n"
+  },
+  {
+    "title": "Uncomponetizide but mapped",
+    "description": "You could create a `BookShelf` component and pass the `id`, `title` and `books` as props, this would make the code easier to read and you could use that component elsewhere if needed.\n"
+  },
+  {
+    "title": "Uncomponetizide:",
+    "description": "The HTML and logic for all bookshelves are the same, the only thing that changes are the title and the books array.\nCreate a `BookShelf` component that can be used for all shelves.\nYou could also create an array with all your shelves and then on your HTML map through the array to show all shelves, for example:\n\n```\nconst shelves = [\n{\n  id: 'currentlyReading',\n  title: 'Currently Reading',\n books: books.filter(book => book.shelf === 'currentlyReading')\n},\n// ...other shelves\n]\n```\nand on the HTML:\n```\n/*...HTML*/\nshelves.map(shelf => (\n <BoofShelf id={shelf.id} title={title} books={shelf.books} />\n)\n/*...HTML*/\n```\nThis reduces code duplication resulting in fewer bugs and code that is easier to read.\n"
+  },
+  {
+    "title": "MAP THROUGH SHELVES",
+    "description": "You could create a `shelves` array that contains the title, id and books.\nFor example:\n```\nconst shelves = [\n{\n  id: 'currentlyReading',\n  title: 'Currently Reading',\n books: books.filter(book => book.shelf === 'currentlyReading')\n},\n// ...other shelves\n]\n```\nand on the HTML:\n```\nshelves.map(shelf => (\n <BookShelf id={shelf.id} title={title} books={shelf.books} />\n)\n```\nThen on your HTML map through this array instead of creating manually each shelf. This way it would be easier to add more shelves and reduce code repetition\n"
+  },
+  {
+    "title": "Thumbail error:",
+    "description": "\nA small issue appears if you search for a book that has no thumbnail. Make sure to validate that `imageLinks` exists and if it doesn't show a default or no image.\n\n**Buscar con la thi**\n"
+  },
+  {
+    "title": "Seach Works but is missing None",
+    "description": "You did a great job comparing the books on the search result with the books on your shelf, however, remember to set the shelf to none if the book doesn't belong to any shelf. See code review for more detail\n"
+  },
+  {
+    "title": "Seach Works but is missing None(Code Review)",
+    "description": "Remember to set the shelf to `none` if it doesn't belong to any shelf\n"
+  },
+  {
+    "title": "Extract book component:",
+    "description": "You could extract this code into a Book Component, this would make your code easier to read, and you would be able to reuse the component somewhere else if needed.\n"
+  },
+  {
+    "title": "Shelf correcto menos el none",
+    "description": "You did a great job comparing the books on the search result with the books on your shelf. Remember to set the shelf to none if the book doesn't belong to any shelf\n"
+  },
+  {
+    "title": "Extract to main:",
+    "description": "You could extract this to a `Main` component to have a cleaner route :wink:\n"
+  },
+  {
+    "title": "Create HashTable para no loopear siempre",
+    "description": "To avoid looping through all the books on the shelves for each book in the search result, you could create a hash table for the books like:\n```\n  hashTable = {}\n  books.forEach( book => hashTable[book.id] = book.shelf\n```\nThen when looping for the search results you could do something like:\n```\nsearchResults.forEach((book) => book.shelf = hashTable[book.id]  || 'none'))\n```\nWhat we are doing here is looping for each book, looking for the key in the hashTable and if doesn't exists set it as `none`\n"
+  },
+  {
+    "title": "ANTI PATTERN KEY",
+    "description": "Using index as key is [an antipattern](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318)\n"
+  },
+  {
+    "title": "OUTSIDE ASYNCHRONOUS",
+    "description": "`BooksAPI.update` is an asynchronous function, this means that this function will be completed in the future and we don't know exactly when. The only way to perform an action and be certain that the books has been updated is if we wait until the promise is fullfiled by calling the `then` method (or `catch` if there is an error). Since you are calling `BooksAPI.get` outside the `then` method of `BooksAPI.update`, sometimes the API is getting the books before it has been updated in the backend by the `update` method. To fix this you could call `get` inside `then`.\n\nI also recommend that instead of calling `this.componentDidMount()` you a create a separate function for getting the books for example `getBooks` and call that function inside `componentDidMount` and updateBookShelf( or even better  you could update the books array in your state, since you already know the book that is being updated and to what shelf. This way your app would feel snappier.)\n"
+  },
+  {
+    "title": "FIND INSTEAD OF FILTER",
+    "description": "You could use [find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) instead of `filter` to gain a performance boost and have code, I think, is easier to read.\n"
+  },
+  {
+    "title": "IGNORE NODE_MODULES",
+    "description": "Make sure to include a [.gitignore](https://help.github.com/articles/ignoring-files/) file and to include your node_modules in it\n"
+  },
+  {
+    "title": "UNSAVED PACKAGES",
+    "description": "Make sure to save all the packages you are using in your `package.json` file using either `npm install --save <package>` or `yarn add <package>`, right now you are missing `react-router-dom`\n"
+  },
+  {
+    "title": "SEARCH SET STATE IS ASYNCRHONOUS",
+    "description": "Great job on the search page, you just got a issue that although is really easy to fix it is important to understand why it happend.\nThe issue is that the query you are sending to the search endpoint is different than the search text.\n\nThis happens because [setState is asynchronous](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3), and you are using an old \"version\" of the state. To fix it either use the query param directly of using setState second parameter(its callback function) to perform the search operation.\n"
+  },
+  {
+    "title": "UPDATE DOESNT WORK AT ALL",
+    "description": "You should update `books` property in the state with the book new data.\nTo accomplish this you could:\n1. use the [object spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to create a new book with the new shelf, for example, `const newBook = { ...book, shelf} `\n2. Use the [filter](https://www.w3schools.com/jsref/jsref_filter.asp) method to remove the book from the list (if the book doesn't exist, this just won't do anything) for example:\n```\nconst newBooks = this.state.books.filter(existingBook => existingBook.id !== book.id)\n```\n3. set books in the state with the [array spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) to add the newBook(with the new shelf) to the newBooks(without the book).\nFor example\n```\nthis.setState({books: [ ...newBooks, newBook]})\n```\n"
+  },
+  {
+    "title": "Console Logs",
+    "description": "Is good practice to remove all unnecessary console.log prior shipping to production which in a way you are doing when you submit your project :wink:\n"
+  },
+  {
+    "title": "General(Awesomes!)",
+    "description": "Excellent :tada: Your hard work has paid off. The \"My Reads\" App is working great.\nKeep up the good work and best of lucks on your next project :star:\n_Left you some comments that could help you improve your app even more!_\n"
+  },
+  {
+    "title": "Single Book Shelf Component(Awesomes!)",
+    "description": "Awesome! :star: Having a single component to handle or your bookshelves reduces code repetition and makes it simpler to reuse\n"
+  },
+  {
+    "title": "Clean Routes(Awesomes!)",
+    "description": ":star: Nice way of organizing your routes!\n"
+  },
+  {
+    "title": "Array of shelves(Awesomes!)",
+    "description": ":100: Excellent, having an array of shelves makes your easier to expand and reduces code repetition!\n"
+  },
+  {
+    "title": "Property Validation(Awesomes!)",
+    "description": ":100: validating an object has the property you are going to use avoid many possible bugs\n"
+  },
+  {
+    "title": "IMPROVE README(Awesomes!)",
+    "description": "Your README files clearly indicate how to install and run your app :star:, you could improve it even more including a description, licensing, contribution, among other things. Here's a great Udacity [README course](https://www.udacity.com/course/writing-readmes--ud777) to help you enhance your skills.\n"
+  },
+  {
+    "title": "FIXED README(Awesomes!)",
+    "description": "Excellent your README file has now personalized and pertinent information about your project :star:\n"
+  },
+  {
+    "title": "Bug Fixed",
+    "description": "Great Job fixing the last bugs, the app search is working great now :star:\n"
+  },
+  {
+    "title": "Use Join",
+    "description": "You could simplify this by using [join](https://www.w3schools.com/jsref/jsref_join.asp) for example:\n```js\nauthors.join(';');\n```\n"
+  }
+]

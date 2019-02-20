@@ -1,0 +1,12 @@
+{
+  "presets": [
+   ["@babel/env",
+    {
+      "targets": {
+        "chrome": "70"
+      }
+    }],
+    "@babel/preset-react",
+  ],
+  "plugins": ["babel-plugin-styled-components"]
+}
