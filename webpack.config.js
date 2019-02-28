@@ -30,9 +30,9 @@ module.exports = {
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist/'),
+    contentBase: path.join(__dirname, '/dist'),
     port,
-    publicPath: `http://localhost:${port}/dist/`,
+    publicPath: `http://localhost:${port}/`,
     hotOnly: true,
   },
   plugins: [

@@ -6,12 +6,15 @@ const Ul = styled.ul`
   margin: 16px;
   display: grid;
   grid-gap: 16px;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, minmax(186px, 1fr));
+  @media screen and (min-width: 720px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 const Li = styled.li`
   border: 2px solid teal;
+  height: 80px;
   border-radius: 8px;
   font-size: 20px;
   padding: 16px;
@@ -19,6 +22,9 @@ const Li = styled.li`
   cursor: pointer;
   position: relative;
   background: ${props => (props.active ? 'teal' : '#141414')};
+  @media screen and (min-width: 720px) {
+    height: 40px;
+  }
 `;
 
 const ShortCutIndicator = styled.span`
